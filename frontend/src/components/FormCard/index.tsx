@@ -13,6 +13,8 @@ function FormCard( {movieID} : Props){
     const navigate = useNavigate();
     const [movie, setMovie] = useState<Movie>();
 
+
+    
     useEffect(()=>{
         axios.get(`${BASE_URL}/movies/${movieID}`)
         .then(response => {

@@ -7,18 +7,18 @@ import { validateEmail } from 'utils/validate';
 import './styles.css';
 
 type Props = {
-    movieId : String;
+    movieID : String;
 }
-function FormCard( {movieId} : Props){
+function FormCard( {movieID} : Props){
     const navigate = useNavigate();
     const [movie, setMovie] = useState<Movie>();
 
     useEffect(()=>{
-        axios.get(`${BASE_URL}/movies/${movieId}`)
+        axios.get(`${BASE_URL}/movies/${movieID}`)
         .then(response => {
             setMovie(response.data);
         })
-    },[movieId]);
+    },[movieID]);
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const email = (event.target as any).email.value;
@@ -32,7 +32,7 @@ function FormCard( {movieId} : Props){
             url: '/scores',
             data: {
                 email: email,
-                movieId: movieId,
+                movieID: movieID,
                 score: score
             }
         }

@@ -20,6 +20,7 @@ function Listing() {
         empty: true
     });
 
+
     useEffect(() => {
         axios.get(`${BASE_URL}/movies?size=12&page=${pageNumber}&sort=title`)
             .then(response => {
@@ -36,15 +37,18 @@ function Listing() {
     //     score: 4.5
     // };
 
-    const handlePageChange = (newPageNumber : number) => {
+    const handlePageChange = (newPageNumber: number) => {
         setPageNumber(newPageNumber);
     }
     return (
         <>
-            <Pagination page={page} onChange={handlePageChange}/>
+            <Pagination page={page} onChange={handlePageChange} />
             <div className="container">
                 <div className="row">
+
+                    {/* retorna todos os filmes */}
                     {page.content.map(movie => (
+                        // precisa colocar a key
                         <div key={movie.id} className="col-sm-6 col-lg-4 col-xl-3 mb-3">
                             <MovieCard movie={movie} />
                         </div>
